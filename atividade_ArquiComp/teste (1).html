@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máquina de Conversão</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffcc00;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        .input-field {
+            padding: 10px;
+            font-size: 1.2em;
+            width: 80%;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .convert-button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .convert-button:hover {
+            background-color: #ffd700;
+        }
+
+        .result {
+            margin: 10px 0;
+            font-size: 1.5em;
+            display: none;
+        }
+
+        .glowing-text {
+            font-size: 1.5em;
+            color: #ffcc00;
+            text-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Máquina Binária</h1>
+        <p>Informe o número em decimal para a conversão:</p>
+
+        <input id="demo1" type="number" placeholder="Apenas decimal!" class="input-field">
+
+        <h3>Converter para:</h3>
+
+
+        <select id="conversionOption" class="input-field">
+            <option value="none">Selecione uma opção</option>
+            <option value="octal">Octal</option>
+            <option value="hexadecimal">Hexadecimal</option>
+            <option value="binario">Binário</option>
+        </select>
+
+        <div id="demo2" class="result"></div>
+
+        <button onclick="converter()" class="convert-button">Converter</button>
+
+      <p></p> <span class="glowing-text">Binário é o caminho da luz</span></p>
+    </div>
+
+    <script>
+        function converter() {
+            var decimal = Number(document.getElementById("demo1").value);
+            var octal = decimal.toString(8);
+            var hexadecimal = decimal.toString(16).toUpperCase();
+            var binaria = decimal.toString(2);
+
+            var option = document.getElementById("conversionOption").value;
+
+           
+            document.getElementById("demo2").innerHTML = "";
+
+            if (option === "octal") {
+                document.getElementById("demo2").innerHTML = "Octal: " + octal
+                document.getElementById("demo2").style.display = "block"
+            } else if (option === "hexadecimal") {
+                document.getElementById("demo2").innerHTML = "Hexadecimal: " + hexadecimal
+                document.getElementById("demo2").style.display = "block"
+            } else if (option === "binario") {
+                document.getElementById("demo2").innerHTML = "Binário: " + binaria
+                document.getElementById("demo2").style.display = "block"
+            } else {
+                document.getElementById("demo2").style.display = "none"
+            }
+        }
+    </script>
+</body>
+
+</html>
